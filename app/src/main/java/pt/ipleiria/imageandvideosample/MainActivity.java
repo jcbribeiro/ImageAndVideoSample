@@ -51,15 +51,23 @@ public class MainActivity extends AppCompatActivity {
     if (requestCode == REQUEST_CODE_VIDEO) {
       if (resultCode == RESULT_OK) {
         Uri videoUri = data.getData();
+
+        String s = videoUri.toString();
+        Uri parse = Uri.parse(s);
+
         VideoView videoView = (VideoView) findViewById(R.id.videoView);
 
-        playVideo(videoView, videoUri);
+        playVideo(videoView, parse);
       }
     } else if (requestCode == REQUEST_CODE_IMAGE) {
       if (resultCode == RESULT_OK) {
         Uri imageUri = data.getData();
+
+        String s = imageUri.toString();
+        Uri parse = Uri.parse(s);
+
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        Glide.with(this).load(imageUri).into(imageView);
+        Glide.with(this).load(parse).into(imageView);
       }
     }
   }
